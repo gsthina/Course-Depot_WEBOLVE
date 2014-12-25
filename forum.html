@@ -149,8 +149,7 @@ query.find({
     for (var i = 0; i < StudReg.length; i++) { 
       var object = StudReg[i];
       console.log(object.get('Username') + ':' + object.get('Message') );
-	  document.getElementById("retrievedMessage").value= document.getElementById("retrievedMessage").value + object.get('Username') + ':' + object.get('Message');
-	  
+	  document.getElementById("retrievedMessage").value= document.getElementById("retrievedMessage").value + object.get('Username') + ':' + object.get('Message') + "\\\n";
     }
   },
   error: function(error) {
