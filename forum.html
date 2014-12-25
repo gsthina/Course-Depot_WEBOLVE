@@ -9,6 +9,7 @@
 		<script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.3.2.min.js"></script>
 		<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
 		<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+		<script type="text/javascript" src="https://www.parse.com/downloads/javascript/parse-1.3.2.js"></script>
 		<!-- Latest compiled and minified CSS
 				<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 
@@ -20,15 +21,21 @@
 		
 		<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
 		<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-		<script type="text/javascript" src="https://www.parse.com/downloads/javascript/parse-1.3.2.js"></script>
+		
 		<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>-->
     </head>
-    <body onload="display()">
+    <body onload="display(),retrival()">
 		<div class="header1"></div>
 				<h3>FORUMS</h3>
 				<a href="index.html"><div class="title1"> Course Depot </div></a>
 								
 				<b><div id="show"> </div></b>
+				
+				
+				
+				
+				
+				<textarea  id="retrievedMessage" rows=19 > </textarea>
 				
 				
 				<textarea id="message" rows=5 style="width: 34%; margin: auto; top: 30em;"> </textarea>
@@ -49,10 +56,11 @@
  Parse.initialize("dyWMVoVnXVlh3YnPzAb7VQYEmASCrXw3oCaN5h44", "uoF0Pkgz32Tc7ypEM50YnROZ5izmgqnwBmCMvz62");
 var msg;
 var Uname;
+var displayName;
 function display() {
 	var displayName = sessionStorage.getItem("Uname");
 	if(displayName){
-		document.getElementById("show").innerHTML = "Welcome " + displayName + ", click your courses to see more on it!";
+		document.getElementById("show").innerHTML = "Here you go " + displayName + ", Enter your message to share to all!";
 	}
 	else{
 		document.getElementById("show").innerHTML = "You are using guest account!";
@@ -63,18 +71,142 @@ function display() {
 
 
 function send(){
+/*
+var i=0;	
+do{
 	var StudReg = Parse.Object.extend("StudReg");
 	var studReg       =   new Parse.User();
 	msg= document.getElementById("message").value;
-	studReg.save(null, {
-  success: function(studReg) {
-    // Now let's update it with some new data. In this case, only cheatMode and score
-    // will get sent to the cloud. playerName hasn't changed.
-    studReg.set("message", msg);
-    studReg.save();
+	console.log(msg);
+	var displayName = sessionStorage.getItem("Uname");
+	document.getElementById("mess").innerHTML = displayName + ":" + msg;
+	++i;
+	}
+	while(msg);
+}
+*/
+
+var msg = document.getElementById("message").value;
+var displayName = sessionStorage.getItem("Uname");
+
+var StudReg = Parse.Object.extend("StudReg");
+var StudReg = new StudReg();
+console.log(displayName);
+
+
+ 
+StudReg.save(null, {
+  success: function(StudReg) {
+    // Execute any logic that should take place after the object is saved.
+    //alert('New object created with objectId: ' + StudReg.id);
+  },
+  error: function(StudReg, error) {
+    // Execute any logic that should take place if the save fails.
+    // error is a Parse.Error with an error code and message.
+    alert('Failed to create new object, with error code: ' + error.message);
   }
 });
+
+
+var StudReg = Parse.Object.extend("StudReg");
+var studReg = new StudReg();
+ 
+
+studReg.set("Username", displayName);
+studReg.set("Message", msg);
+ 
+studReg.save(null, {
+  success: function(StudReg) {
+    // Now let's update it with some new data. In this case, only cheatMode and score
+    // will get sent to the cloud. playerName hasn't changed.
+    studReg.set("Username", displayName);
+	studReg.set("Message", msg);
+    studReg.save();
+	console.log('DONE');
+  }
+});
+
+
+
+msg= document.getElementById("message").value;
+	console.log(msg);
+	var displayName = sessionStorage.getItem("Uname");
+	document.getElementById("mess").innerHTML = displayName + ":" + msg;
+	document.getElementById("mess").innerHTML = displayName + ":" + msg;
+	
+document.getElementById("message").value="";
 }
 
 
+function retrival(){
+var StudReg = Parse.Object.extend("StudReg");
+var query = new Parse.Query(StudReg);
+query.find({
+  success: function(StudReg) {
+    console.log("Successfully retrieved " + StudReg.length + " scores.");
+    // Do something with the returned Parse.Object values
+	document.getElementById("retrievedMessage").value="";
+    for (var i = 0; i < StudReg.length; i++) { 
+      var object = StudReg[i];
+      console.log(object.get('Username') + ':' + object.get('Message') );
+	  document.getElementById("retrievedMessage").value= document.getElementById("retrievedMessage").value + object.get('Username') + ':' + object.get('Message');
+	  
+    }
+  },
+  error: function(error) {
+    alert("Error: " + error.code + " " + error.message);
+  }
+});
+/*
+
+Parse.initialize("dyWMVoVnXVlh3YnPzAb7VQYEmASCrXw3oCaN5h44", "uoF0Pkgz32Tc7ypEM50YnROZ5izmgqnwBmCMvz62");
+var GameScore = Parse.Object.extend("GameScore");
+var gameScore = new GameScore();
+ 
+gameScore.set("score", 1337);
+gameScore.set("playerName", "Sean Plott");
+gameScore.set("cheatMode", false);
+ 
+gameScore.save(null, {
+  success: function(gameScore) {
+    // Execute any logic that should take place after the object is saved.
+    alert('New object created with objectId: ' + gameScore.id);
+  },
+  error: function(gameScore, error) {
+    // Execute any logic that should take place if the save fails.
+    // error is a Parse.Error with an error code and message.
+    alert('Failed to create new object, with error code: ' + error.message);
+  }
+});
+var GameScore = Parse.Object.extend("GameScore");
+var query = new Parse.Query(GameScore);
+query.get("xWMyZ4YEGZ", {
+  success: function(gameScore) {
+    // The object was retrieved successfully.
+  },
+  error: function(object, error) {
+    // The object was not retrieved successfully.
+    // error is a Parse.Error with an error code and message.
+  }
+});
+*/
+
+
+/*
+Parse.initialize("dyWMVoVnXVlh3YnPzAb7VQYEmASCrXw3oCaN5h44", "uoF0Pkgz32Tc7ypEM50YnROZ5izmgqnwBmCMvz62");
+var post = Parse.Object.extend("Post");
+var post = new Post();
+post.id = "1zEcyElZ80";
+ 
+myComment.set("parent", post);
+var post = fetchedComment.get("parent");
+post.fetch({
+  success: function(post) {
+    var title = post.get("title");
+  }
+});
+
+*/
+
+};
 </script>

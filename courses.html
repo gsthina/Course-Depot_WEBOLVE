@@ -151,8 +151,9 @@ function logout(){
 };
 
 var Uname;
+var displayName
 function display() {
-	var displayName = sessionStorage.getItem("Uname");
+	displayName = sessionStorage.getItem("Uname");
 	if(displayName){
 		document.getElementById("show").innerHTML = "Welcome " + displayName + ", click your courses to see more on it!";
 	}
