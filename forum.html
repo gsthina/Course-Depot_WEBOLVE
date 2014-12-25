@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="author" content="MukeshGS and GSThina">
+     <title>FORUM | Course Depot</title>
+        <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+        <link type="text/css" rel="stylesheet" href="style.css"/>
+		<script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.3.2.min.js"></script>
+		<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+		<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+		<!-- Latest compiled and minified CSS
+				<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+
+		<!-- Optional theme 
+				<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+
+		<!-- Latest compiled and minified JavaScript 
+				<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+		
+		<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+		<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+		<script type="text/javascript" src="https://www.parse.com/downloads/javascript/parse-1.3.2.js"></script>
+		<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>-->
+    </head>
+    <body onload="display()">
+		<div class="header1"></div>
+				<h3>FORUMS</h3>
+				<a href="index.html"><div class="title1"> Course Depot </div></a>
+								
+				<b><div id="show"> </div></b>
+				
+				
+				<textarea id="message" rows=5 style="width: 34%; margin: auto; top: 30em;"> </textarea>
+				
+				<div class="postButton" onclick="send()">POST</div>
+				
+   
+   
+   
+	<div class="footer" align="center" >
+				Powered By: <b>Techno-Inhalers</b>	| G Surendar Thina & Mukesh G
+		</div>
+    </body>
+</html>
+
+<script>
+
+ Parse.initialize("dyWMVoVnXVlh3YnPzAb7VQYEmASCrXw3oCaN5h44", "uoF0Pkgz32Tc7ypEM50YnROZ5izmgqnwBmCMvz62");
+var msg;
+var Uname;
+function display() {
+	var displayName = sessionStorage.getItem("Uname");
+	if(displayName){
+		document.getElementById("show").innerHTML = "Welcome " + displayName + ", click your courses to see more on it!";
+	}
+	else{
+		document.getElementById("show").innerHTML = "You are using guest account!";
+	}
+};
+
+
+
+
+function send(){
+	var StudReg = Parse.Object.extend("StudReg");
+	var studReg       =   new Parse.User();
+	msg= document.getElementById("message").value;
+	studReg.save(null, {
+  success: function(studReg) {
+    // Now let's update it with some new data. In this case, only cheatMode and score
+    // will get sent to the cloud. playerName hasn't changed.
+    studReg.set("message", msg);
+    studReg.save();
+  }
+});
+}
+
+
+</script>

@@ -1,0 +1,171 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="author" content="MukeshGS and GSThina">
+     <title>COURSES | Course Depot</title>
+        <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+        <link type="text/css" rel="stylesheet" href="style.css"/>
+		<script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.3.2.min.js"></script>
+		
+		<!-- Latest compiled and minified CSS
+				<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+
+		<!-- Optional theme 
+				<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+
+		<!-- Latest compiled and minified JavaScript 
+				<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>-->
+		
+		<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+		<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+		<script type="text/javascript" src="https://www.parse.com/downloads/javascript/parse-1.3.2.js"></script>
+		<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    </head>
+    <body onload="display()">
+		<div class="header1"> </div>
+		
+			<h3>YOUR COURSES</h3>
+			
+			<div onclick="logout()"><h4>Log OUT</h4></div>
+			<b><div id="show"> </div></b>
+			<a href="index.html"><div class="title1"> Course Depot </div></a>
+			<div class="coursebutton" onclick="nav()">Forums</div>
+			<a href="upload.html"><div class="coursebutton" >Upload Notes</div></a>
+			<div class="courses">
+				 <!-- Course list of that particular college -->
+		
+		<fieldset>
+		<legend><div class="student" style="color: white; background-color: Silver; text-align: center; border: 1px solid black; border-radius: 20px; 	-moz-box-shadow:    inset 0 0 10px #ffffff;
+   -webkit-box-shadow: inset 0 10px 10px #ffffff;
+   -o-box-shadow: inset 0 0 10px #ffffff;
+   box-shadow:         inset 0 10px 10px #ffffff;"><a href="https://drive.google.com/folderview?id=0B3qP_hkzcYAJbkl1bEJ6ZkN3c0U&usp=sharing&tid=0B3qP_hkzcYAJUzMzX0FFNW9EamM " name="link">MATHEMATICS</a></div></legend>			
+		<li> Matrices</a></li>
+		<li> Functions of several variable</a></li>
+		<li> Ordinary differential equations</a></li>
+		<li> Geometrical application of calculus</a></li>
+		<li> Three dimensional analytical geometry</a></li>
+		</fieldset>
+		<br> </br>
+		<fieldset>
+		<legend><div class="student" style="color: white; background-color: Silver; text-align: center; border: 1px solid black; border-radius: 20px;-moz-box-shadow:    inset 0 0 10px #ffffff;
+   -webkit-box-shadow: inset 0 10px 10px #ffffff;
+   -o-box-shadow: inset 0 0 10px #ffffff;
+   box-shadow:         inset 0 10px 10px #ffffff;"><a id="link" href="https://drive.google.com/folderview?id=0B3qP_hkzcYAJNHJnWi1FaXhjZjA&usp=sharing&tid=0B3qP_hkzcYAJUzMzX0FFNW9EamM " >PHYSICS</a></div></legend>			
+		<li> Mechanical properties of solids</a></li>
+		<li> Acoustics</a></li>
+		<li> Electromagnetic wave and application</a></li>
+		<li> Lasers</a></li>
+		<li> Fibre optics</a></li>
+		</fieldset>
+		<br> </br>
+		<fieldset>
+		<legend><div class="student" style="color: white; background-color: Silver; text-align: center; border: 1px solid black; border-radius: 20px;;-moz-box-shadow:    inset 0 0 10px #ffffff;
+   -webkit-box-shadow: inset 0 10px 10px #ffffff;
+   -o-box-shadow: inset 0 0 10px #ffffff;
+   box-shadow:         inset 0 10px 10px #ffffff;  "><a href="https://drive.google.com/folderview?id=0B3qP_hkzcYAJX2NrRzM3WTd4dHc&usp=sharing&tid=0B3qP_hkzcYAJUzMzX0FFNW9EamM " name="link">CHEMISTRY</a></div></legend>			
+	<li> Water treatment</a></li>
+	<li> Polymers and reinforced plastics</a></li>
+	<li> Phase equilibria</a></li>
+		</fieldset></div>
+	<!--<li><a href=" "><div>Lubricants</a></li>
+	 <li><a href=" "><div>Adhesives</a></li>
+	<li><a href=" "><div>corrosion and its control</a></li>
+	<li><a href=" "><div>Instrumental methods of analysis</a></li> -->
+		
+			
+		<div class="courses1">
+	<fieldset>
+		<legend><div class="student" style="color: white; background-color: Silver; text-align: center; border: 1px solid black; border-radius: 20px; 	-moz-box-shadow:    inset 0 0 10px #ffffff;
+   -webkit-box-shadow: inset 0 10px 10px #ffffff;
+   -o-box-shadow: inset 0 0 10px #ffffff;
+   box-shadow:         inset 0 10px 10px #ffffff;"><a href="https://drive.google.com/folderview?id=0B3qP_hkzcYAJTHUyR2ZqbWdtZE0&usp=sharing&tid=0B3qP_hkzcYAJUzMzX0FFNW9EamM " name="link">MECHANICAL</a></div></legend>			
+	<li> Machine elements-1</a></li>
+	<li> Machine elements-2</a></li>
+	<li> Energy</a></li>
+	<li> Sheet metal forming</a></li>
+	<li> Lathe practice</a></li>
+	</fieldset>
+	<br> </br>
+	<fieldset>
+		<legend><div class="student" style="color: white; background-color: Silver; text-align: center; border: 1px solid black; border-radius: 20px;-moz-box-shadow:    inset 0 0 10px #ffffff;
+   -webkit-box-shadow: inset 0 10px 10px #ffffff;
+   -o-box-shadow: inset 0 0 10px #ffffff;
+   box-shadow:         inset 0 10px 10px #ffffff;"><a href="https://drive.google.com/folderview?id=0B3qP_hkzcYAJc2g1V21aRW0tR2c&usp=sharing&tid=0B3qP_hkzcYAJUzMzX0FFNW9EamM" name="link">ELECTRICAL</a></div></legend>			
+	<li> Fundamentals of DC circuits</a></li>
+	<li> Magnetic circuits</a></li>
+	<li> AC circuits</a></li>
+	<li> Electrical machines</a></li>
+	<li> Electrical safety and wiring</a></li>
+	</fieldset>
+	<br> </br>
+	<fieldset>
+		<legend><div class="student" style="color: white; background-color: Silver; text-align: center; border: 1px solid black; border-radius: 20px;;-moz-box-shadow:    inset 0 0 10px #ffffff;
+   -webkit-box-shadow: inset 0 10px 10px #ffffff;
+   -o-box-shadow: inset 0 0 10px #ffffff;
+   box-shadow:         inset 0 10px 10px #ffffff;  "><a href="https://drive.google.com/folderview?id=0B3qP_hkzcYAJQk45Qk1OM1o5SUE&usp=sharing&tid=0B3qP_hkzcYAJUzMzX0FFNW9EamM" name="link">ADDITIONAL</a></div></legend>			
+	<li> Personality development</a></li>
+	<li> Aptitude</a></li>
+	<li> Origami</a></li>
+	</fieldset>		
+	<fieldset id="recent">
+				<legend><div class="student" style="font-size: 1em;color: Black; width: 100%; text-align: center; background-color: Silver; text-align: center; border: 1px solid black; border-radius: 20px; 	-moz-box-shadow:    inset 0 0 10px #ffffff;
+   -webkit-box-shadow: inset 0 10px 10px #ffffff;
+   -o-box-shadow: inset 0 0 10px #ffffff;
+   box-shadow:         inset 0 10px 10px #ffffff; ">RECENT UPLOADS by others</div>
+														<ul>
+															<li>Maths</li>
+															<li>Maths</li>
+															<li>Maths</li>
+														</ul>	
+				
+				
+				
+				</legend>
+					
+					<div>
+						<div id="recentUploads">
+							<ul>
+								
+								
+								
+							</ul>
+						</div>
+					</div>
+   
+				</fieldset>
+
+				
+	</div>
+	<div class="footer" align="center" >
+				Powered By: <b>Techno-Inhalers</b>	| G Surendar Thina & Mukesh G
+		</div>
+    </body>
+</html>
+
+<script>
+Parse.initialize("dyWMVoVnXVlh3YnPzAb7VQYEmASCrXw3oCaN5h44", "uoF0Pkgz32Tc7ypEM50YnROZ5izmgqnwBmCMvz62");
+function logout(){
+	Parse.User.logOut();
+	window.location="index.html"
+};
+
+var Uname;
+function display() {
+	var displayName = sessionStorage.getItem("Uname");
+	if(displayName){
+		document.getElementById("show").innerHTML = "Welcome " + displayName + ", click your courses to see more on it!";
+	}
+	else{
+		document.getElementById("show").innerHTML = "You are using guest account!";
+	}
+};	   
+
+function nav(){
+	var StudReg = Parse.Object.extend("StudReg");
+	var studReg       =   new Parse.User();
+	sessionStorage.setItem("Uname", displayName );
+	window.location=    "forum.html";
+}
+
+</script>

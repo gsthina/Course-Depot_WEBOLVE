@@ -1,0 +1,211 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="author" content="MukeshGS and GSThina">
+     <title>SIGN UP | Course Depot</title>
+        <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+        <link type="text/css" rel="stylesheet" href="style.css"/>
+		<script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.3.2.min.js"></script>
+		
+		<!-- Latest compiled and minified CSS 
+				<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+
+		<!-- Optional theme
+				<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+
+		<!-- Latest compiled and minified JavaScript 
+				<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+		
+		<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+		<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+		<script type="text/javascript" src="https://www.parse.com/downloads/javascript/parse-1.3.2.js"></script>
+		<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>-->
+    </head>
+    <body onload="remind()">
+		
+		<div class="header1"> </div> 
+			<h3>SIGN UP</h3>
+			<a href="index.html"><div class="title1"> Course Depot </div></a>
+				
+         <!--
+            <div class="detailsLeft">
+                <div class="label"> School Name*    </div> <input type="text"       id="schoolname" /> <br/> <br/>
+                <div class="label"> Branch Name*    </div> <input type="text"       id="branchname" /> <br/> <br/>
+				<div class="label"> Contact No*    </div> <input type="text"       id='contact' /> <br/> <br/>
+			</div>
+            <div class="detailsRight">   
+				<div class="label"> Email*         </div> <input type="text"       id='email' /> <br/> <br/>
+				<div class="label"> Password*       </div> <input type="password"   id='password' /> <br/> <br/>
+                <div class="label"> Confirm Password*   </div> <input  type="password"   id='conpass' /> <br/> <br/>                             
+                <div class="label"> Address*        </div> <textarea id="address" rows=3 > </textarea> <br/> <br/>
+                <div class="button" onclick="checkButtonClick()"> Register </div>
+            </div>
+		-->
+		<div class="signup" id="student">
+		<div class="student">STUDENT SIGNUP</div>
+				<form>
+				<div class="studentDetail">User Name:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::<input type="text" id="username"></div>
+				<br></br>
+				<div class="studentDetail">College Name::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::<input type="text" id="collegename"></div>
+				<br></br>
+				<div class="studentDetail">Email:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::<input type="text" id="email"></div>
+				<br></br>
+				<div class="studentDetail">Password:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::<input type="password" id="password"></div>
+				<br></br>
+				
+				<div class="signbutton" onclick="checkButtonClick(1)"> Sign Up </div>
+				</form>
+				
+		</div>
+		
+		<div class="signupT" id="teacher">
+			<div class="student">TEACHER SIGNUP</div>
+				<form>
+				<div class="studentDetail">User Name:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::<input type="text" id="username1"></div>
+				<br></br>
+				<div class="studentDetail">College Name::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::<input type="text" id="collegename1"></div>
+				<br></br>
+				<div class="studentDetail">Email:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::<input type="text" id="email1"></div>
+				<br></br>
+				<div class="studentDetail">Password:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::<input type="password" id="password1"></div>
+				<br></br>
+				
+				<div class="signbutton" onclick="checkButtonClick(2)"> Sign Up </div>
+				</form>
+				
+		</div>
+		<div class="sign" onclick="choose(1)">STUDENT</div>
+		<div class="sign" onclick="choose(2)">TEACHER</div>
+	<div class="footer" align="center" >
+				Powered By: <b>Techno-Inhalers</b>	| G Surendar Thina & Mukesh G
+		</div>
+    </body>
+</html>
+
+
+
+<script type="text/javascript">
+
+//Parse.initialize("avx8N1dxzO7BU1QTkrSGC0ibcowObI9Q4kvikfn2", "ndSz3O9ZMkpjQtaRUrNcLOsVHfbWT9hwxaxSSgO5");
+Parse.initialize("dyWMVoVnXVlh3YnPzAb7VQYEmASCrXw3oCaN5h44", "uoF0Pkgz32Tc7ypEM50YnROZ5izmgqnwBmCMvz62");
+function remind(){
+	alert("Select your Category!");
+};
+function signupButtonClick(n){
+if(n===1){	
+	var name            =   document.getElementById("username").value;
+	var college          =   document.getElementById("collegename").value;
+	var pass            =   document.getElementById("password").value;
+	var email           =   document.getElementById("email").value;
+	var StudReg = Parse.Object.extend("StudReg");
+	var studReg       =   new Parse.User();
+	studReg.set("Category", "Student");
+	studReg.set("username", name);
+	studReg.set("college", college);
+	studReg.set("email", email)
+	studReg.set("password", pass);
+	
+	studReg.signUp(null, {
+        success: function(studReg) {
+			sleep(500);
+            window.location=    "login.html";
+			alert("The 'Student' account for '" + name + "' has been successfully created!");
+        },
+        error: function(TeachReg, error) {
+            console.log(error);
+            alert('Failed to register a new account, with error code: ' + error.message);
+        }
+    });
+}
+else{
+	var name1            =   document.getElementById("username1").value;
+	var college1         =   document.getElementById("collegename1").value;
+	var pass1            =   document.getElementById("password1").value;
+	var email1           =   document.getElementById("email1").value;
+	var TeachReg = Parse.Object.extend("TeachReg");
+	var teachReg       =   new Parse.User();
+	teachReg.set("category", "Teacher");
+	teachReg.set("username", name1);
+	teachReg.set("college", college1);
+	teachReg.set("email", email1);
+	teachReg.set("password", pass1);
+	
+	
+	teachReg.signUp(null, {
+        success: function(teachReg) {
+            window.location=    "login.html";
+			alert("The 'Teacher' account for '" + name1 + "' has been successfully created!");
+        },
+        error: function(TeachReg, error) {
+            console.log(error);
+            alert('Failed to register a new account, with error code: ' + error.message);
+        }
+    });
+}
+};
+
+function checkButtonClick(n){
+if(n===1){
+	var name            =   document.getElementById("username").value;
+	var college          =   document.getElementById("collegename").value;
+	var pass            =   document.getElementById("password").value;
+	var email           =   document.getElementById("email").value;
+	
+	if(name.length<5)
+        alert("Username should contain atleast 5 characters!!");
+    else if(college.length<2)
+        alert("College name should contain atleast 2 characters!!");
+	else if(email.length<6)
+        alert("This doesn't seem to be a Valid email-id");
+    else if(pass.length<4)
+        alert("PASSWORD should contain atleast 4 characters!!");
+    else{
+        signupButtonClick(n);
+    }
+}
+else if(n===2){
+var name1            =   document.getElementById("username1").value;
+	var college1          =   document.getElementById("collegename1").value;
+	var pass1            =   document.getElementById("password1").value;
+	var email1           =   document.getElementById("email1").value;
+	
+	if(name1.length<5)
+        alert("Username should contain atleast 5 characters!!");
+    else if(college1.length<2)
+        alert("College name should contain atleast 2 characters!!");
+	else if(email1.length<6)
+        alert("This doesn't seem to be a Valid email-id");
+    else if(pass1.length<4)
+        alert("PASSWORD should contain atleast 4 characters!!");
+    else{
+        signupButtonClick(n);
+    }
+}
+};
+var n;
+
+
+function choose(n) {
+
+
+if(n===1) {
+  document.getElementById("student").style.display = 'block';
+  document.getElementById("teacher").style.display = 'none';
+}else if(n===2){
+	document.getElementById("student").style.display = 'none';
+	document.getElementById("teacher").style.display = 'block';
+}
+
+};	
+
+
+function sleep(milliseconds) {
+  var start = new Date().getTime();
+  for (var i = 0; i < 1e7; i++) {
+    if ((new Date().getTime() - start) > milliseconds){
+      break;
+    }
+  }
+}
+</script>						

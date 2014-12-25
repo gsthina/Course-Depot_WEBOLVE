@@ -1,0 +1,165 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="author" content="MukeshGS and GSThina">
+     <title>LOG IN | Course Depot</title>
+        <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+        <link type="text/css" rel="stylesheet" href="style.css"/>
+		<script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.3.2.min.js"></script>
+		
+		<!-- Latest compiled and minified CSS 
+				<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+
+		<!-- Optional theme 
+				<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+
+		<!-- Latest compiled and minified JavaScript 
+				<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+		
+		<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+		<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+		<script type="text/javascript" src="https://www.parse.com/downloads/javascript/parse-1.3.2.js"></script>
+		<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>-->
+    </head>
+    <body onload="remind()">
+		<div class="header1"> </div> 
+			<h3>LOG IN</h3>
+			<a href="index.html"><div class="title1"> Course Depot </div></a>
+			<div class="login" id="studentLogin">	
+			<fieldset>
+				<legend align="right"><div class="student" style="color: white; background-color: Grey; border-radius: 5px; text-align: center;	-moz-box-shadow:    inset 0 0 10px #ffffff;
+   -webkit-box-shadow: inset 0 10px 10px #ffffff;
+   -o-box-shadow: inset 0 0 10px #ffffff;
+   box-shadow:         inset 0 10px 10px #ffffff;">STUDENT LOGIN</div>:Enter Your LogIn details:</legend>
+				
+				<form>
+				<div class="studentDetail">User name:<input type="text" id="username"></div>
+				<br></br>
+				<div class="studentDetail">Password:<input type="password" id="password"></div>
+				</form>
+				<br></br>
+				<div class="button" onclick="log(1)"> Log In </div>
+			</div>
+			</fieldset>
+			<div class="loginT" id="teacherLogin">	
+			<fieldset>
+				<legend align="left"><div class="student" style="color: white; background-color: Grey; border-radius: 5px; text-align: center;	-moz-box-shadow:    inset 0 0 10px #ffffff;
+   -webkit-box-shadow: inset 0 10px 10px #ffffff;
+   -o-box-shadow: inset 0 0 10px #ffffff;
+   box-shadow:         inset 0 10px 10px #ffffff;">TEACHER LOGIN</div>:Enter Your LogIn details:</legend>
+				<form>
+				<div class="studentDetail">User name:<input type="text" id="username1"></div>
+				<br></br>
+				<div class="studentDetail">Password:<input type="password" id="password1"></div>
+				</form>
+				<br></br>
+				<div class="button" onclick="log(2)"> Log In </div>
+			</fieldset>
+			</div>
+			
+			<div class="logbutton" onclick="choose(1)">STUDENT</div>
+			<div class="logbutton" onclick="choose(2)">TEACHER</div>
+			
+		<div class="footer" align="center" >
+				Powered By: <b>Techno-Inhalers</b>	| G Surendar Thina & Mukesh G
+		</div>
+    </body>
+</html>
+
+
+<script type="text/javascript">
+
+//Parse.initialize("avx8N1dxzO7BU1QTkrSGC0ibcowObI9Q4kvikfn2", "ndSz3O9ZMkpjQtaRUrNcLOsVHfbWT9hwxaxSSgO5");
+Parse.initialize("dyWMVoVnXVlh3YnPzAb7VQYEmASCrXw3oCaN5h44", "uoF0Pkgz32Tc7ypEM50YnROZ5izmgqnwBmCMvz62");
+
+function remind(){
+	alert("Select your Category!");
+};
+
+var n;
+function choose(n) {
+	if(n===1) {
+  document.getElementById("studentLogin").style.display = 'block';
+  document.getElementById("teacherLogin").style.display = 'none';
+}else{
+  document.getElementById("teacherLogin").style.display = 'block';
+  document.getElementById("studentLogin").style.display = 'none';
+}
+return n;
+};
+
+var Uname;
+function buttonClick(n){
+if(n==1){
+
+	var name            =   document.getElementById("username").value;
+	var pass            =   document.getElementById("password").value;
+	var category		=	"STUDENT";
+	var StudReg = Parse.Object.extend("StudReg");
+	var studReg       =   new Parse.User();
+	Parse.User.logIn(name, pass, {
+  success: function(user) {
+
+	n=1;
+	sessionStorage.studReg   =   user.username;
+	sessionStorage.setItem("Uname", Uname );
+	window.location=    "courses.html";
+  },
+  error: function(user, error) {
+    alert("Try again with valid Username and Password.");
+  }
+});
+}
+else if(n===2){
+	
+	var name1            =   document.getElementById("username1").value;
+	var pass1            =   document.getElementById("password1").value;
+	var category		=	"TEACHER"
+	var TeachReg = Parse.Object.extend("TeachReg");
+	var teachReg       =   new Parse.User();
+	Parse.User.logIn(name1, pass1, {
+  success: function(user) {
+	
+	n=2;
+	sessionStorage.teachReg   =   user.id;
+	sessionStorage.setItem("Uname", Uname );
+	window.location=    "courses.html";
+  },
+  error: function(user, error) {
+    
+  }
+});
+}	
+};
+
+function log(n){
+if(n===1){
+	var name            =   document.getElementById("username").value;
+	var pass            =   document.getElementById("password").value;
+	
+	if(name.length<5)
+        alert("Username should contain atleast 5 characters!!");
+    else if(pass.length<4)
+        alert("PASSWORD should contain atleast 4 characters!!");
+    else{
+        buttonClick(1);
+    }
+	Uname=name;
+}
+else if(n===2){
+	var name1            =   document.getElementById("username1").value;
+	var pass1            =   document.getElementById("password1").value;
+	
+	if(name1.length<5)
+        alert("Username should contain atleast 5 characters!!");
+    else if(pass1.length<4)
+        alert("PASSWORD should contain atleast 4 characters!!");
+    else{
+        buttonClick(2);
+    }
+	Uname=name1;
+}
+};
+
+</script>
