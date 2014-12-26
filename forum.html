@@ -126,13 +126,8 @@ studReg.save(null, {
   }
 });
 
-
-
-msg= document.getElementById("message").value;
 	console.log(msg);
-	var displayName = sessionStorage.getItem("Uname");
-	document.getElementById("mess").innerHTML = displayName + ":" + msg;
-	document.getElementById("mess").innerHTML = displayName + ":" + msg;
+	document.getElementById("retrievedMessage").value = document.getElementById("retrievedMessage").value + msg + "\\\n";
 	
 document.getElementById("message").value="";
 }
